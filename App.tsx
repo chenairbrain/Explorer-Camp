@@ -133,7 +133,7 @@ const App: React.FC = () => {
 
 const HomeView: React.FC<{ teams: Team[] }> = ({ teams }) => {
   return (
-    <div className="max-w-5xl mx-auto space-y-8 animate-fade-in">
+    <div className="max-w-5xl mx-auto space-y-6 animate-fade-in">
       <header className="text-center pt-8 pb-2">
         <div className="inline-block p-6 bg-brand-primary rounded-[2.5rem] text-white mb-6 shadow-2xl shadow-brand-primary/20">
           <i className="fas fa-flag-checkered text-4xl"></i>
@@ -152,8 +152,9 @@ const HomeView: React.FC<{ teams: Team[] }> = ({ teams }) => {
             to={`/team/${team.id}`}
             className="bg-white rounded-[2.5rem] p-6 md:p-8 border border-brand-accent shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all active:scale-95 flex flex-col items-center text-center group relative overflow-hidden"
           >
-            <div className={`w-16 h-16 md:w-24 md:h-24 rounded-[2rem] ${team.color} flex items-center justify-center text-white mb-6 shadow-xl shadow-brand-soft group-hover:rotate-6 transition-transform p-4 md:p-6`}>
-              <TeamIcon icon={team.icon} className="w-full h-full object-contain" />
+            {/* 圖示尺寸優化：加大基礎尺寸 (w-20)，優化響應式斷點 (sm:w-24)，減少內邊距 (p-4/sm:p-5) 以放大圖示本身 */}
+            <div className={`w-20 h-20 sm:w-24 sm:h-24 rounded-[2rem] ${team.color} flex items-center justify-center text-white mb-4 shadow-xl shadow-brand-soft group-hover:rotate-6 transition-transform p-4 sm:p-5`}>
+              <TeamIcon icon={team.icon} className="w-full h-full object-contain drop-shadow-sm" />
             </div>
             
             <div className="flex flex-col items-center">
